@@ -2,7 +2,7 @@ var ease = require('ease');
 var offset = require('offset');
 
 function scrollTo(el, duration, easingType) {
-  var easing = type ? ease[easingType] : ease['linear'];
+  var easing = easingType ? ease[easingType] : ease['linear'];
   var stop = false;
   var start = Date.now();
   var toY = offset(el).top;
