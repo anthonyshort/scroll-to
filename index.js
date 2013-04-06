@@ -5,8 +5,8 @@ function scrollTo(el, duration, easingType) {
   var easing = easingType ? ease[easingType] : ease['linear'];
   var stop = false;
   var start = Date.now();
-  var toY = offset(el).top;
   var fromY = document.body.scrollTop;
+  var toY = fromY + offset(el).top;
 
   var updatePosition = function(){
     var now = Date.now();
