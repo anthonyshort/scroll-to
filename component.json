@@ -2,10 +2,11 @@
   "name": "scroll-to",
   "repo": "anthonyshort/scroll-to",
   "description": "Animate scrolling to points",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [],
   "dependencies": {
-    "component/ease": "1.0.0"
+    "component/ease": "1.0.0",
+    "anthonyshort/offset": "0.0.1"
   },
   "development": {},
   "license": "MIT",

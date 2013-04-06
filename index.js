@@ -1,16 +1,26 @@
 var ease = require('ease');
+var offset = require('offset');
 
-function scrollTo(element, to, duration, type) {
-  var easing = type ? ease[type] : ease['linear'];
-    
-  if (duration < 0 || !easing) return;
-  var difference = to - element.scrollTop;
-  var perTick = Math.round(easing(difference / duration) * 10);
+function scrollTo(el, duration, easingType) {
+  var easing = type ? ease[easingType] : ease['linear'];
+  var stop = false;
+  var start = Date.now();
+  var toY = offset(el).top;
+  var fromY = document.body.scrollTop;
+
+  var updatePosition = function(){
+    var now = Date.now();
+    if (now - start >= duration) stop = true;
+    var p = (now - start) / duration;
+    var tick = fromY + (toY - fromY) * easing(p);
+    document.body.scrollTop = tick;
+    setTimeout(function() {
+      if(stop) return;
+      updatePosition();
+    }, 10);
+  };
   
-  setTimeout(function() {
-    element.scrollTop = element.scrollTop + perTick;
-    scrollTo(element, to, duration - 10, type);
-  }, 10);
+  updatePosition();
 };
 
 module.exports = scrollTo;
