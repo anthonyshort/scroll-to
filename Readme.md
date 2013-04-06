@@ -1,7 +1,7 @@
 
 # scroll-to
 
-  Animate scrolling to points
+  Animate scrolling to elements.
 
 ## Installation
 
@@ -9,7 +9,9 @@
 
 ## API
 
-   
+    scrollTo(element, 2000, 'inOutQuad');
+
+Pretty basic, eh? Give it a DOM element, a duration and an easing function from component/easing.
 
 ## License
 
