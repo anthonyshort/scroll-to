@@ -7,13 +7,15 @@ function scrollTo(el, duration, easingType) {
   var start = Date.now();
   var fromY = document.body.scrollTop;
   var toY = fromY + offset(el).top;
+  var html = document.getElementsByTagName('html')[0];
 
   var updatePosition = function(){
     var now = Date.now();
     if (now - start >= duration) stop = true;
     var p = (now - start) / duration;
-    var tick = fromY + (toY - fromY) * easing(p);
+    var tick = Math.round(fromY + (toY - fromY) * easing(p));
     document.body.scrollTop = tick;
+    html.scrollTop = tick;
     setTimeout(function() {
       if(stop) return;
       updatePosition();
