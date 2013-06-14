@@ -5,9 +5,9 @@ function scrollTo(el, duration, easingType) {
   var easing = easingType ? ease[easingType] : ease['linear'];
   var stop = false;
   var start = Date.now();
-  var fromY = document.body.scrollTop;
-  var toY = fromY + offset(el).top;
   var html = document.getElementsByTagName('html')[0];
+  var fromY = document.body.scrollTop || html.scrollTop;
+  var toY = fromY + offset(el).top;
 
   var updatePosition = function(){
     var now = Date.now();
@@ -21,7 +21,7 @@ function scrollTo(el, duration, easingType) {
       updatePosition();
     }, 10);
   };
-  
+
   updatePosition();
 };
 
