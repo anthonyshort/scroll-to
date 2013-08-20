@@ -1,13 +1,14 @@
 var ease = require('ease');
 var offset = require('offset');
 
-function scrollTo(el, duration, easingType) {
+function scrollTo(el, duration, easingType, scrollOffset) {
+  scrollOffset = scrollOffset == null ? 0 : scrollOffset;
   var easing = easingType ? ease[easingType] : ease['linear'];
   var stop = false;
   var start = Date.now();
   var html = document.getElementsByTagName('html')[0];
   var fromY = document.body.scrollTop || html.scrollTop;
-  var toY = fromY + offset(el).top;
+  var toY = fromY + offset(el).top + scrollOffset;
 
   var updatePosition = function(){
     var now = Date.now();
