@@ -1,7 +1,7 @@
 {
   "name": "scroll-to",
   "description": "Animate scrolling to points",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [],
   "dependencies": {
     "component/ease": "1.0.0",
