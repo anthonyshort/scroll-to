@@ -12,14 +12,13 @@ function scrollTo(el, duration, easingType, scrollOffset) {
   var toY = fromY + offset(el).top + scrollOffset;
 
   function animate() {
-    if(stop) animate = function(){};
-    raf(animate);
     var now = Date.now();
     if (now - start >= duration) stop = true;
     var p = (now - start) / duration;
     var tick = Math.round(fromY + (toY - fromY) * easing(p));
     document.body.scrollTop = tick;
     html.scrollTop = tick;
+    if (!stop) raf(animate);
   }
 
   animate();
